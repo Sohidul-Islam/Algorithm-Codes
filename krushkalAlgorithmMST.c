@@ -34,14 +34,21 @@ void main()
 					min=cost[i][j];
 					a=u=i;
 					b=v=j;
+        printf("in if : U: %d \n",u);
+		printf("in if: V: %d \n",v);
 				}
 			}
 		}
+		printf("Before: U: %d \n",u);
+		printf("Before: V: %d \n",v);
 		u=find(u);
-		cout<<u<<endl;
-		cout<<"U: "<<u<<endl;
+
+		printf("u: %d \n",u);
+
+
 		v=find(v);
-		cout<<"V: "<<v<<endl;
+		printf("V: %d \n",v);
+
 		if(uni(u,v))
 		{
 			printf("%d edge (%d,%d) =%d\n",ne++,a,b,min);

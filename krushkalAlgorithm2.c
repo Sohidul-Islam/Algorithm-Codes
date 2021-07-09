@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include<stdio.h>
 int V,E; //total number of vertex total number of edges
 int parent[100];
 int cost [1000][10000];
@@ -22,11 +21,12 @@ void kruskalMST()
 {
 	int mincost = 0; // Cost of min MST.
 	int edge_count = 0;
+
 	while (edge_count < V - 1)
     {
-		int min = INT_MAX, a = -1, b = -1;
-		for (int i = 0; i < V; i++) {
-			for (int j = 0; j < V; j++)
+		int min = 9999, a = 0, b = 0,i = 0,j=0;
+		for (i = 0; i < V; i++) {
+			for (j = 0; j < V; j++)
             {
                 int k,l;
                 k = i;
@@ -43,48 +43,59 @@ void kruskalMST()
 		}
 
 		union1(a, b);
-        cout<<"Edge "<<edge_count++<<":("<<a<<" "<<b<<") cost:"<<min<<endl;
+        printf("Edge: %d (%d, %d) cost: %d \n",edge_count++,a,b,min);
 		mincost += min;
 	}
-	cout<<endl<<"Minimum cost= "<<mincost;
+	 printf("Minimum csot %d \n",mincost);
 }
 // driver program to test above function
 int main()
 {
-    cin>>V>>E;//input vertex and edges.
+
+    scanf("%d %d",&V,&E);//input vertex and edges.
     for(int i=0;i<V;i++)//row i = 0;
     {
         for(int j=0; j<V; j++)//col j = 0 to j<v;
         {
-            cost[i][j]= INT_MAX; //here cost is 2d array r = v , col = v; r*c = v*v = ?
+            cost[i][j]= 9999; //here cost is 2d array r = v , col = v; r*c = v*v = ?
 
         }
     }
 
-    cout<<"Cost: "<<endl;
-
-     for(int i=0;i<V;i++)
+    for(int i=0;i<V;i++)//row i = 0;
     {
-        for(int j=0; j<V; j++)
+        for(int j=0; j<V; j++)//col j = 0 to j<v;
         {
-            cout<<cost[i][j]<<" ";
+            printf("%d ",cost[i][j]);//here cost is 2d array r = v , col = v; r*c = v*v = ?
 
         }
-        cout<<endl;
+        printf("\n");
     }
+
+
+
 
     for(int j = 0;j<E;j++)
     {
         int m,n;// 0--->1
         //here m = starting node(parent node) and n = destinatin node
         // m = 0 , n = 1;
-        cin>>m>>n;
-        cin>>cost[m][n];
+
+        scanf("%d %d",&m,&n);
+        scanf("%d",&cost[m][n]);
         //cost[m][n];
         //cost[0][1];
     }
 
+ for(int i=0;i<V;i++)//row i = 0;
+    {
+        for(int j=0; j<V; j++)//col j = 0 to j<v;
+        {
+            printf("%d ",cost[i][j]);//here cost is 2d array r = v , col = v; r*c = v*v = ?
 
+        }
+        printf("\n");
+    }
 
 
     for (int i = 0; i < V; i++)
