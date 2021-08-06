@@ -82,6 +82,16 @@ int main()
         cin>>cost[m][n];
         //cost[m][n];
         //cost[0][1];
+
+        /* input here
+            4 6
+            0 1 2
+            0 3 4
+            0 2 3
+            1 3 5
+            1 2 6
+            2 3 1
+        */
     }
 
 
