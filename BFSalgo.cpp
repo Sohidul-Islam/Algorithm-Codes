@@ -2,53 +2,77 @@
 #include<vector>
 
 using namespace std;
-vector<int> Graph[100];//vector array stl.
-int isVisited[100];
+vector<int> adj[100];
+int visited[100];
 
-void BreadthFirstSearch(int s,int n)//s = starting node and n = total vertex
+void bfs(int s,int n)
 {
     for(int i = 0 ; i<n ; i++)
     {
-        isVisited[i]=0;
+        visited[i]=0;
     }
 
-    queue<int>Queue;//taking a queue.
+    queue<int>Q;
 
-    Queue.push(s);
+    Q.push(s);
 
-    isVisited[s] = 1;
+    visited[s] = 1;
 
-    while(!Queue.empty())
+    while(!Q.empty())
     {
-        int u = Queue.front();
+        int u = Q.front();
         cout<<u<<" ";
-        Queue.pop();
-        for(int i = 0; i<Graph[u].size(); i++)
+        Q.pop();
+        for(int i = 0; i<adj[u].size(); i++)
         {
-            if(isVisited[Graph[u][i]]==0)
+            if(visited[adj[u][i]]==0)
             {
-                int v = Graph[u][i];
-                isVisited[v] = 1;
-                Queue.push(v);
+                int v = adj[u][i];
+                visited[v] = 1;
+                Q.push(v);
             }
         }
     }
 }
 
+
 int main()
 {
-    Graph[6].push_back(4);
-    Graph[4].push_back(6);
-    Graph[4].push_back(3);
-    Graph[4].push_back(5);
-    Graph[5].push_back(2);
-    Graph[5].push_back(1);
-    Graph[3].push_back(4);
-    Graph[3].push_back(2);
-    Graph[2].push_back(3);
-    Graph[2].push_back(5);
-    Graph[2].push_back(1);
-    Graph[1].push_back(2);
-    Graph[1].push_back(5);
-    BreadthFirstSearch(2,6);
+    adj[6].push_back(4);
+    adj[4].push_back(6);
+    adj[4].push_back(3);
+    adj[4].push_back(5);
+    adj[5].push_back(2);
+    adj[5].push_back(1);
+    adj[3].push_back(4);
+    adj[3].push_back(2);
+    adj[2].push_back(3);
+    adj[2].push_back(5);
+    adj[2].push_back(1);
+    adj[1].push_back(2);
+    adj[1].push_back(5);
+
+
+
+  for (int i = 0; i < 8; i++) {
+
+        cout << "Elements at index "
+             << i << ": ";
+
+        // Displaying element at each column,
+        // begin() is the starting iterator,
+        // end() is the ending iterator
+        for (auto it = adj[i].begin();
+             it != adj[i].end(); it++) {
+
+            // (*it) is used to get the
+            // value at iterator is
+            // pointing
+            cout <<"Value: "<< *it << ' ';
+        }
+        cout << endl;
+    }
+
+
+    bfs(6,6);
 }

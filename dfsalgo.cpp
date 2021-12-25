@@ -2,7 +2,7 @@
 #include<vector>
 
 using namespace std;
-vector<int>adj[100];
+vector<int> adj[100];
 int visited[100];
 int edge_id[100];
 int counter = 0;
@@ -49,15 +49,31 @@ void dfs(int s,int n)
 int main()
 {
 //connected
+//
+//    adj[6].push_back(4);
+//    adj[4].push_back(6);
+//    adj[4].push_back(3);
+//    adj[4].push_back(5);
+//    adj[5].push_back(4);
+//    adj[5].push_back(2);
+//    adj[5].push_back(1);
+//    adj[3].push_back(4);
+//    adj[3].push_back(2);
+//    adj[2].push_back(3);
+//    adj[2].push_back(5);
+//    adj[2].push_back(1);
+//    adj[1].push_back(2);
+//    adj[1].push_back(5);
 
+
+//unconnected
     adj[6].push_back(4);
     adj[4].push_back(6);
-    adj[4].push_back(3);
-    adj[4].push_back(5);
-    adj[5].push_back(4);
+
+
     adj[5].push_back(2);
     adj[5].push_back(1);
-    adj[3].push_back(4);
+
     adj[3].push_back(2);
     adj[2].push_back(3);
     adj[2].push_back(5);
@@ -65,21 +81,11 @@ int main()
     adj[1].push_back(2);
     adj[1].push_back(5);
 
+    cin>>m>>n
+    //souce
 
-//comment --> ctrl+shift + c
-//uncomment --> ctrl+shift + x
+    adj[m].push_back(n);
 
-//unconnected
-//    adj[6].push_back(4);
-//    adj[4].push_back(6);
-//    adj[5].push_back(2);
-//    adj[5].push_back(1);
-//    adj[3].push_back(2);
-//    adj[2].push_back(3);
-//    adj[2].push_back(5);
-//    adj[2].push_back(1);
-//    adj[1].push_back(2);
-//    adj[1].push_back(5);
 
     dfs(5,6);
     cout<<endl;
