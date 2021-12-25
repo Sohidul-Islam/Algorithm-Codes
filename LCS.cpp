@@ -3,7 +3,7 @@ using namespace std;
 
 void LCS(char S1[], char S2[], int m, int n)
 {
-    int DATA[m + 1][n + 1];
+    int tableData[m + 1][n + 1];
 
 
     for (int i = 0; i <= m; i++)
@@ -12,11 +12,11 @@ void LCS(char S1[], char S2[], int m, int n)
         {
 
             if (i == 0 || j == 0)
-                DATA[i][j] = 0;
+                tableData[i][j] = 0;
             else if (S1[i - 1] == S2[j - 1])
             {
 
-                DATA[i][j] = DATA[i - 1][j - 1] + 1;
+                tableData[i][j] = tableData[i - 1][j - 1] + 1;
 
             }
 
@@ -24,7 +24,7 @@ void LCS(char S1[], char S2[], int m, int n)
             {
 
 
-                DATA[i][j] = max(DATA[i - 1][j], DATA[i][j - 1]);
+                tableData[i][j] = max(tableData[i - 1][j], tableData[i][j - 1]);
 
             }
 
@@ -39,26 +39,26 @@ void LCS(char S1[], char S2[], int m, int n)
         for (int j = 0; j <= n; j++)
         {
 
-            cout<<DATA[i][j]<<" ";
+            cout<<tableData[i][j]<<" ";
         }
         cout<<endl;
     }
 
-    int index = DATA[m][n];
+    int index = tableData[m][n];//2--> 0 1 2
     cout<<"LCS length: "<<index<<endl;
 
     char LCS[index];
-    LCS[index] = '\0';//01
+    LCS[index] = '\0';//0 1
 
     int i = m, j = n;
 
     while(i > 0 && j > 0)
     {
-        if( DATA[i][j] == DATA[i-1][j] )
+        if( tableData[i][j] == tableData[i-1][j] )
         {
             i--;
         }
-        else if( DATA[i][j] == DATA[i][j-1] )
+        else if( tableData[i][j] == tableData[i][j-1] )
         {
             j--;
         }
@@ -86,8 +86,8 @@ int main()
     int m = strlen(S1);//5
     int n = strlen(S2);//4
 
-    cout<<m<<endl;
-    cout<<n<<endl;
+//    cout<<m<<endl;
+//    cout<<n<<endl;
 
     LCS(S1, S2, m, n);
 }

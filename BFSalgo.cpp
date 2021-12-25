@@ -2,77 +2,53 @@
 #include<vector>
 
 using namespace std;
-vector<int> adj[100];
-int visited[100];
+vector<int> Graph[100];//vector array stl.
+int isVisited[100];
 
-void bfs(int s,int n)
+void BreadthFirstSearch(int s,int n)//s = starting node and n = total vertex
 {
     for(int i = 0 ; i<n ; i++)
     {
-        visited[i]=0;
+        isVisited[i]=0;
     }
 
-    queue<int>Q;
+    queue<int>Queue;//taking a queue.
 
-    Q.push(s);
+    Queue.push(s);
 
-    visited[s] = 1;
+    isVisited[s] = 1;
 
-    while(!Q.empty())
+    while(!Queue.empty())
     {
-        int u = Q.front();
+        int u = Queue.front();
         cout<<u<<" ";
-        Q.pop();
-        for(int i = 0; i<adj[u].size(); i++)
+        Queue.pop();
+        for(int i = 0; i<Graph[u].size(); i++)
         {
-            if(visited[adj[u][i]]==0)
+            if(isVisited[Graph[u][i]]==0)
             {
-                int v = adj[u][i];
-                visited[v] = 1;
-                Q.push(v);
+                int v = Graph[u][i];
+                isVisited[v] = 1;
+                Queue.push(v);
             }
         }
     }
 }
 
-
 int main()
 {
-    adj[6].push_back(4);
-    adj[4].push_back(6);
-    adj[4].push_back(3);
-    adj[4].push_back(5);
-    adj[5].push_back(2);
-    adj[5].push_back(1);
-    adj[3].push_back(4);
-    adj[3].push_back(2);
-    adj[2].push_back(3);
-    adj[2].push_back(5);
-    adj[2].push_back(1);
-    adj[1].push_back(2);
-    adj[1].push_back(5);
-
-
-
-  for (int i = 0; i < 8; i++) {
-
-        cout << "Elements at index "
-             << i << ": ";
-
-        // Displaying element at each column,
-        // begin() is the starting iterator,
-        // end() is the ending iterator
-        for (auto it = adj[i].begin();
-             it != adj[i].end(); it++) {
-
-            // (*it) is used to get the
-            // value at iterator is
-            // pointing
-            cout <<"Value: "<< *it << ' ';
-        }
-        cout << endl;
-    }
-
-
-    bfs(6,6);
+    Graph[6].push_back(4);
+    Graph[4].push_back(6);
+    Graph[4].push_back(3);
+    Graph[4].push_back(5);
+    Graph[5].push_back(2);
+    Graph[5].push_back(1);
+    Graph[3].push_back(4);
+    Graph[3].push_back(2);
+    Graph[2].push_back(3);
+    Graph[2].push_back(5);
+    Graph[2].push_back(1);
+    Graph[1].push_back(2);
+    Graph[1].push_back(5);
+    BreadthFirstSearch(2,6);
 }
